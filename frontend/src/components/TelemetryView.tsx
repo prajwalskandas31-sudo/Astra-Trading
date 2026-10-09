@@ -165,7 +165,7 @@ export function TelemetryView() {
                       className="hover:bg-zinc-900/40 dark:hover:bg-zinc-900/40 light:hover:bg-slate-50 transition cursor-pointer"
                     >
                       <td className="py-3.5 px-5 text-zinc-400 whitespace-nowrap text-[11px]">
-                        {new Date(log.created_at).toLocaleString("en-IN", {
+                        {new Date(log.timestamp).toLocaleString("en-IN", {
                           timeZone: "Asia/Kolkata",
                           month: "short",
                           day: "numeric",
@@ -192,7 +192,7 @@ export function TelemetryView() {
                         {log.details || "—"}
                       </td>
                       <td className="py-3.5 px-4 text-right text-zinc-500 text-[11px]">
-                        {log.ip_address || "127.0.0.1"}
+                        {(log as any).ip_address || "127.0.0.1"}
                       </td>
                     </tr>
                   );
@@ -231,11 +231,11 @@ export function TelemetryView() {
               </div>
               <div className="flex justify-between py-1 border-b border-zinc-900">
                 <span className="text-zinc-500">Timestamp:</span>
-                <span className="text-zinc-300">{selectedLog.created_at}</span>
+                <span className="text-zinc-300">{selectedLog.timestamp}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-zinc-900">
                 <span className="text-zinc-500">IP Address:</span>
-                <span className="text-zinc-300">{selectedLog.ip_address || "127.0.0.1"}</span>
+                <span className="text-zinc-300">{(selectedLog as any).ip_address || "127.0.0.1"}</span>
               </div>
               <div className="py-2">
                 <span className="text-zinc-500 block mb-1">Details:</span>

@@ -474,7 +474,7 @@ def send_test_alert(
                 detail=f"WhatsApp alerts are currently disabled for {user.name}. Enable WhatsApp alerts first.",
             )
         dest = user.phone_number
-        msg = payload.custom_message or f"Srini Trading Alert: Test signal dispatched successfully to {user.name} ({dest})."
+        msg = payload.custom_message or f"Astra Trading Alert: Test signal dispatched successfully to {user.name} ({dest})."
     elif channel == "telegram":
         if not user.telegram_alerts_enabled:
             raise HTTPException(
@@ -482,7 +482,7 @@ def send_test_alert(
                 detail=f"Telegram alerts are currently disabled for {user.name}. Enable Telegram alerts first.",
             )
         dest = user.telegram_chat_id or user.phone_number
-        msg = payload.custom_message or f"Srini Trading Bot: Test broadcast dispatched to {dest}."
+        msg = payload.custom_message or f"Astra Trading Bot: Test broadcast dispatched to {dest}."
     else:
         raise HTTPException(status_code=400, detail="Invalid alert channel. Use 'whatsapp' or 'telegram'.")
 

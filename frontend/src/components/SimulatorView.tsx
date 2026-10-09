@@ -327,22 +327,24 @@ export function SimulatorView({ users, onOrderExecuted }: SimulatorViewProps) {
               <div className="space-y-2 text-xs font-mono">
                 <div className="flex justify-between">
                   <span className="text-zinc-500">Order ID:</span>
-                  <span className="text-white">{result.order_id}</span>
+                  <span className="text-white">{result.details?.order_id || "SIM-OK"}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-zinc-500">Execution Mode:</span>
-                  <span className="text-emerald-400 font-bold">{result.mode}</span>
+                  <span className="text-zinc-500">Status:</span>
+                  <span className="text-emerald-400 font-bold">{result.status}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-zinc-500">Latency:</span>
-                  <span className="text-cyan-400">{result.execution_speed_ms}ms</span>
+                  <span className="text-zinc-500">Timestamp:</span>
+                  <span className="text-cyan-400">{result.execution_time}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-500">Avg Price:</span>
-                  <span className="text-zinc-200">₹{result.executed_price}</span>
+                  <span className="text-zinc-200">
+                    {result.details?.price ? `₹${result.details.price}` : "MARKET"}
+                  </span>
                 </div>
                 <div className="pt-2 border-t border-zinc-900 text-zinc-400 text-[11px]">
-                  {result.message}
+                  {result.reason}
                 </div>
               </div>
             </div>

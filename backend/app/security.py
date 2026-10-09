@@ -10,12 +10,13 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 import bcrypt
 
-SECRET_KEY = os.getenv("SECRET_KEY", "srini-trading-super-admin-secret-key-2026-v1-secure")
+SECRET_KEY = os.getenv("SECRET_KEY", "astra-trading-super-admin-secret-key-2026-v1-secure")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 24 hours
 
 # Derive 32-byte key for Fernet symmetric encryption of broker API secrets
-_raw_key = hashlib.sha256(SECRET_KEY.encode()).digest()
+FERNET_SALT = os.getenv("FERNET_SALT", "srini-trading-super-admin-secret-key-2026-v1-secure")
+_raw_key = hashlib.sha256(FERNET_SALT.encode()).digest()
 FERNET_KEY = base64.urlsafe_b64encode(_raw_key)
 cipher_suite = Fernet(FERNET_KEY)
 

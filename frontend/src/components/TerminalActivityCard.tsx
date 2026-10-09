@@ -105,7 +105,7 @@ export function TerminalActivityCard({
                     {log.details || log.action}
                   </p>
                   <p className="text-[11px] text-zinc-500 mt-0.5 font-mono flex items-center gap-2">
-                    <span>{formatTimeAgo(log.created_at)}</span>
+                    <span>{formatTimeAgo(log.timestamp)}</span>
                     <span>•</span>
                     <span className="text-zinc-600 truncate max-w-[120px]">
                       {log.user_name || "System"}

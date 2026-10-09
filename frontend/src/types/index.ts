@@ -72,6 +72,7 @@ export interface AuditLog {
   user_name: string | null;
   details: string;
   severity: "info" | "success" | "warning" | "danger";
+  ip_address?: string | null;
 }
 
 export interface OrderSimulateResponse {
