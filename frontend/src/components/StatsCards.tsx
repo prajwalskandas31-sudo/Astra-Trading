@@ -34,7 +34,8 @@ export function StatsCards({ stats }: StatsCardsProps) {
       deltaText: `${stats.active_users} active (${activePercent}%)`,
       isPositive: stats.revoked_users === 0,
       subText: stats.revoked_users > 0 ? `${stats.revoked_users} revoked` : "100% operational",
-      subTextColor: stats.revoked_users > 0 ? "text-rose-400" : "text-zinc-500",
+      subTextColor: stats.revoked_users > 0 ? "text-rose-500 dark:text-rose-400" : "text-slate-400 dark:text-zinc-500",
+      valueColor: "text-slate-900 dark:text-white",
     },
     {
       label: "Live Order Placement",
@@ -43,8 +44,8 @@ export function StatsCards({ stats }: StatsCardsProps) {
       deltaText: `${livePercent}% armed`,
       isPositive: true,
       subText: `${total - stats.live_orders_active} safety locked (OFF)`,
-      subTextColor: "text-zinc-400",
-      valueColor: stats.live_orders_active > 0 ? "text-emerald-400" : "text-zinc-300",
+      subTextColor: "text-slate-500 dark:text-zinc-400",
+      valueColor: stats.live_orders_active > 0 ? "text-emerald-600 dark:text-emerald-400" : "text-slate-700 dark:text-zinc-300",
     },
     {
       label: "Broker Integrations",
@@ -53,7 +54,8 @@ export function StatsCards({ stats }: StatsCardsProps) {
       deltaText: stats.broker_reauth === 0 ? "All verified" : `${stats.broker_reauth} re-auth needed`,
       isPositive: stats.broker_reauth === 0,
       subText: "Encrypted Fernet tokens",
-      subTextColor: "text-teal-400",
+      subTextColor: "text-teal-600 dark:text-teal-400",
+      valueColor: "text-slate-900 dark:text-white",
     },
     {
       label: "Active Alert Feeds",
@@ -62,7 +64,8 @@ export function StatsCards({ stats }: StatsCardsProps) {
       deltaText: `${stats.whatsapp_alerts_active} WA • ${stats.telegram_alerts_active} TG`,
       isPositive: true,
       subText: "Independent broadcasts",
-      subTextColor: "text-zinc-500",
+      subTextColor: "text-slate-400 dark:text-zinc-500",
+      valueColor: "text-slate-900 dark:text-white",
     },
   ];
 
@@ -71,13 +74,13 @@ export function StatsCards({ stats }: StatsCardsProps) {
       {cards.map((card) => (
         <div
           key={card.label}
-          className="bg-zinc-950 p-5 flex flex-col justify-between hover:bg-zinc-900/40 transition-colors"
+          className="bg-white dark:bg-zinc-950 p-5 flex flex-col justify-between hover:bg-slate-50 dark:hover:bg-zinc-900/40 transition-colors"
         >
           <div className="flex items-center justify-between">
-            <span className="font-normal text-xs tracking-wide text-zinc-400">
+            <span className="font-normal text-xs tracking-wide text-slate-500 dark:text-zinc-400">
               {card.label}
             </span>
-            <span className="p-1.5 rounded-lg bg-zinc-900 text-zinc-400 border border-zinc-800">
+            <span className="p-1.5 rounded-lg bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 border border-slate-200 dark:border-zinc-800">
               {card.icon}
             </span>
           </div>
@@ -86,20 +89,20 @@ export function StatsCards({ stats }: StatsCardsProps) {
             <p
               className={cn(
                 "font-semibold text-2xl lg:text-3xl tabular-nums tracking-tight font-mono",
-                card.valueColor || "text-white"
+                card.valueColor
               )}
             >
               {card.value}
             </p>
           </div>
 
-          <div className="flex items-center justify-between text-xs pt-1 border-t border-zinc-900">
+          <div className="flex items-center justify-between text-xs pt-2 border-t border-slate-100 dark:border-zinc-900">
             <span
               className={cn(
                 "inline-flex items-center gap-1 font-medium px-1.5 py-0.5 rounded text-[11px]",
                 card.isPositive
-                  ? "text-emerald-400 bg-emerald-500/10"
-                  : "text-amber-400 bg-amber-500/10"
+                  ? "text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20"
+                  : "text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20"
               )}
             >
               <ArrowUpRight className="w-3 h-3" />

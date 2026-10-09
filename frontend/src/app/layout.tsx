@@ -24,7 +24,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark h-full" suppressHydrationWarning>
-      <body className={`${inter.variable} ${mono.variable} font-sans min-h-screen antialiased`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('astra_terminal_theme');
+                  if (theme === 'light') {
+                    document.documentElement.classList.remove('dark');
+                  } else {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className={`${inter.variable} ${mono.variable} font-sans min-h-screen antialiased transition-colors duration-150`}>
         {children}
       </body>
     </html>

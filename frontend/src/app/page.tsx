@@ -181,7 +181,7 @@ export default function Home() {
             className="fixed inset-0 bg-black/70 backdrop-blur-sm"
             onClick={() => setMobileSidebarOpen(false)}
           />
-          <div className="relative z-10 w-64 bg-zinc-950 dark:bg-[#070b15] light:bg-white h-full shadow-2xl">
+          <div className="relative z-10 w-64 bg-white dark:bg-[#070b15] h-full shadow-2xl">
             <Sidebar
               currentTab={activeTab}
               onTabChange={(t) => {
@@ -215,14 +215,14 @@ export default function Home() {
         {/* Dynamic Tab Body */}
         <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {globalError && (
-            <div className="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center justify-between animate-in fade-in">
+            <div className="mb-6 p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-300 text-xs flex items-center justify-between animate-in fade-in">
               <div className="flex items-center gap-2.5">
-                <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                <AlertCircle className="w-4 h-4 text-rose-500 shrink-0" />
                 <span>{globalError}</span>
               </div>
               <button
                 onClick={loadData}
-                className="px-3 py-1 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 text-xs font-semibold cursor-pointer"
+                className="px-3 py-1 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-700 dark:text-rose-200 text-xs font-semibold cursor-pointer"
               >
                 Retry
               </button>
@@ -235,24 +235,24 @@ export default function Home() {
               {/* Hero Banner with Status Pill */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-800 dark:border-zinc-800 light:border-slate-200 bg-zinc-900/60 dark:bg-zinc-900/60 light:bg-slate-100 text-xs mb-3">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-zinc-300 dark:text-zinc-300 light:text-slate-700 font-medium">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 dark:border-zinc-800 bg-slate-100 dark:bg-zinc-900/60 text-xs mb-3">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-slate-700 dark:text-zinc-300 font-medium">
                       Multi-Broker Gateway Active
                     </span>
-                    <span className="text-zinc-600 dark:text-zinc-600 light:text-slate-400">•</span>
-                    <span className="text-zinc-400 dark:text-zinc-400 light:text-slate-600 font-mono">
+                    <span className="text-slate-400 dark:text-zinc-600">•</span>
+                    <span className="text-slate-600 dark:text-zinc-400 font-mono">
                       Fernet Zero-Leak Vault
                     </span>
                   </div>
 
                   <h1
-                    className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2 text-white dark:text-white light:text-slate-900"
+                    className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2 text-slate-900 dark:text-white"
                     style={{ letterSpacing: "-0.03em" }}
                   >
                     Astra Mission Control
                   </h1>
-                  <p className="text-xs sm:text-sm text-zinc-400 dark:text-zinc-400 light:text-slate-600 max-w-2xl leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
                     Central sovereign terminal orchestrating broker API accounts, live order routing safety toggles, and independent WhatsApp & Telegram trade alert dispatches.
                   </p>
                 </div>
@@ -269,16 +269,16 @@ export default function Home() {
                   </button>
                   <Link
                     href="/demo"
-                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-zinc-900 dark:bg-zinc-900 light:bg-slate-100 hover:bg-zinc-800 text-zinc-300 dark:text-zinc-300 light:text-slate-700 hover:text-white border border-zinc-800 dark:border-zinc-800 light:border-slate-200 text-xs font-mono transition"
+                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-slate-200 dark:hover:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-zinc-800 text-xs font-mono transition"
                   >
                     <span>Reference Demo</span>
-                    <ExternalLink className="w-3 h-3 text-sky-400" />
+                    <ExternalLink className="w-3 h-3 text-sky-500" />
                   </Link>
                 </div>
               </div>
 
               {/* 1px Hairline Border Grid System (efferd-dashboard-2 style) */}
-              <div className="grid grid-cols-1 gap-px bg-zinc-800 dark:bg-[#162033] light:bg-slate-200 p-px md:grid-cols-2 lg:grid-cols-4 rounded-xl overflow-hidden border border-zinc-800 dark:border-[#162033] light:border-slate-200 shadow-2xl">
+              <div className="grid grid-cols-1 gap-px bg-slate-200 dark:bg-[#162033] p-px md:grid-cols-2 lg:grid-cols-4 rounded-xl overflow-hidden border border-slate-200 dark:border-[#162033] shadow-2xl">
                 {/* Row 1: 4 Dense KPI Cards */}
                 <StatsCards stats={stats} />
 
@@ -287,10 +287,10 @@ export default function Home() {
                 <AlertDistributionChart />
 
                 {/* Row 3: Gateway Health (col-span-2) & Real-time Activity Feed (col-span-2) */}
-                <div className="md:col-span-2 bg-zinc-950 dark:bg-[#090f1e] light:bg-white flex flex-col">
+                <div className="md:col-span-2 bg-white dark:bg-[#090f1e] flex flex-col">
                   <GatewayHealthCard onRefresh={loadData} isRefreshing={loadingData} />
                 </div>
-                <div className="md:col-span-2 bg-zinc-950 dark:bg-[#090f1e] light:bg-white flex flex-col">
+                <div className="md:col-span-2 bg-white dark:bg-[#090f1e] flex flex-col">
                   <TerminalActivityCard
                     onOpenAuditLogs={() => setIsAuditLogsOpen(true)}
                     refreshTrigger={refreshCount}
@@ -305,13 +305,13 @@ export default function Home() {
             <div className="space-y-6 animate-in fade-in duration-200">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white dark:text-white light:text-slate-900 flex items-center gap-2">
+                  <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
                     <span>User & Broker Management Gateway</span>
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-mono font-bold">
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 font-mono font-bold">
                       {users.length} Registered
                     </span>
                   </h2>
-                  <p className="text-xs sm:text-sm text-zinc-400 dark:text-zinc-400 light:text-slate-600 mt-1">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 mt-1">
                     Manage client accounts, live order routing safety locks, encrypted broker credentials, and independent alerts.
                   </p>
                 </div>
@@ -362,7 +362,7 @@ export default function Home() {
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-zinc-900 dark:border-zinc-900 light:border-slate-200 bg-black/90 dark:bg-[#060911] light:bg-slate-50 py-6 text-center text-xs text-zinc-500 dark:text-zinc-500 light:text-slate-500 font-mono transition-colors">
+        <footer className="border-t border-slate-200 dark:border-zinc-900 bg-slate-50 dark:bg-[#060911] py-6 text-center text-xs text-slate-500 dark:text-zinc-500 font-mono transition-colors">
           Astra Trading Super Admin Mission Control • Powered by Python FastAPI & Next.js • Protected by Encrypted Gateway
         </footer>
       </div>

@@ -71,22 +71,22 @@ export function OrderSimulationModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-150">
-      <div className="bg-zinc-950 border border-zinc-800 rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-in fade-in duration-150">
+      <div className="bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="px-7 py-5 border-b border-zinc-850 flex items-center justify-between bg-black/60">
+        <div className="px-7 py-5 border-b border-slate-200 dark:border-zinc-850 flex items-center justify-between bg-slate-50/80 dark:bg-black/60">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-2xl bg-zinc-900 border border-zinc-800 text-white">
-              <Zap className="w-5 h-5 text-emerald-400" />
+            <div className="p-2.5 rounded-2xl bg-slate-100 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white">
+              <Zap className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-white tracking-tight">Live Order Routing Simulator</h2>
-              <p className="text-xs text-zinc-400">Verifies toggle enforcement & broker routing rules</p>
+              <h2 className="text-base font-bold text-slate-900 dark:text-white tracking-tight">Live Order Routing Simulator</h2>
+              <p className="text-xs text-slate-500 dark:text-zinc-400">Verifies toggle enforcement & broker routing rules</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-900 transition active:scale-95 cursor-pointer"
+            className="p-2 rounded-xl text-slate-400 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-zinc-900 transition active:scale-95 cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -95,14 +95,14 @@ export function OrderSimulationModal({
         {/* Content */}
         <form onSubmit={handleSimulate} className="p-7 space-y-4">
           {error && (
-            <div className="p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs">
+            <div className="p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-300 text-xs">
               {error}
             </div>
           )}
 
           {/* User selector */}
           <div>
-            <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 uppercase tracking-wider mb-1.5">
               Select User Account
             </label>
             <select
@@ -111,7 +111,7 @@ export function OrderSimulationModal({
                 setUserId(Number(e.target.value));
                 setResult(null);
               }}
-              className="w-full px-4 py-2.5 rounded-xl bg-black border border-zinc-800 text-white text-xs focus:border-zinc-500 outline-none transition cursor-pointer"
+              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-black border border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white text-xs focus:border-blue-500 outline-none transition cursor-pointer"
             >
               {allUsers.map((u) => (
                 <option key={u.id} value={u.id}>
@@ -123,26 +123,26 @@ export function OrderSimulationModal({
 
           {/* User Live Status Inspector */}
           {currentUser && (
-            <div className="p-4 rounded-2xl bg-black/70 border border-zinc-800 text-xs space-y-2 font-mono">
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-black/70 border border-slate-200 dark:border-zinc-800 text-xs space-y-2 font-mono">
               <div className="flex items-center justify-between">
-                <span className="text-zinc-400 font-sans">Live Order Placement:</span>
+                <span className="text-slate-500 dark:text-zinc-400 font-sans">Live Order Placement:</span>
                 <span
                   className={`font-bold ${
-                    currentUser.live_orders_enabled ? "text-emerald-400" : "text-amber-400"
+                    currentUser.live_orders_enabled ? "text-emerald-600 dark:text-emerald-400" : "text-amber-600 dark:text-amber-400"
                   }`}
                 >
                   {currentUser.live_orders_enabled ? "ENABLED (ON)" : "DISABLED (OFF)"}
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-zinc-400 font-sans">Broker Gateway:</span>
-                <span className="text-zinc-200">
+                <span className="text-slate-500 dark:text-zinc-400 font-sans">Broker Gateway:</span>
+                <span className="text-slate-800 dark:text-zinc-200">
                   {currentUser.broker_name} ({currentUser.broker_status})
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-zinc-400 font-sans">Account Access:</span>
-                <span className={currentUser.is_active ? "text-emerald-400 font-sans font-semibold" : "text-rose-400 font-sans font-semibold"}>
+                <span className="text-slate-500 dark:text-zinc-400 font-sans">Account Access:</span>
+                <span className={currentUser.is_active ? "text-emerald-600 dark:text-emerald-400 font-sans font-semibold" : "text-rose-600 dark:text-rose-400 font-sans font-semibold"}>
                   {currentUser.is_active ? "Active" : "Revoked"}
                 </span>
               </div>
@@ -152,26 +152,26 @@ export function OrderSimulationModal({
           {/* Order Details */}
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-1">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 uppercase tracking-wider mb-1">
                 Contract / Symbol
               </label>
               <input
                 type="text"
                 value={symbol}
                 onChange={(e) => setSymbol(e.target.value)}
-                className="w-full px-3.5 py-2 rounded-xl bg-black border border-zinc-800 text-white text-xs focus:border-zinc-500 outline-none font-mono"
+                className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-black border border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white text-xs focus:border-blue-500 outline-none font-mono"
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-1">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 uppercase tracking-wider mb-1">
                 Side
               </label>
-              <div className="grid grid-cols-2 gap-1 bg-black p-1 rounded-xl border border-zinc-800">
+              <div className="grid grid-cols-2 gap-1 bg-slate-100 dark:bg-black p-1 rounded-xl border border-slate-200 dark:border-zinc-800">
                 <button
                   type="button"
                   onClick={() => setSide("BUY")}
                   className={`py-1.5 text-xs font-bold rounded-lg cursor-pointer transition ${
-                    side === "BUY" ? "bg-white text-black" : "text-zinc-400 hover:text-white"
+                    side === "BUY" ? "bg-white text-slate-900 shadow-sm dark:bg-white dark:text-black" : "text-slate-600 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-white"
                   }`}
                 >
                   BUY
@@ -180,7 +180,7 @@ export function OrderSimulationModal({
                   type="button"
                   onClick={() => setSide("SELL")}
                   className={`py-1.5 text-xs font-bold rounded-lg cursor-pointer transition ${
-                    side === "SELL" ? "bg-rose-500 text-white" : "text-zinc-400 hover:text-white"
+                    side === "SELL" ? "bg-rose-600 text-white shadow-sm" : "text-slate-600 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-white"
                   }`}
                 >
                   SELL
@@ -191,7 +191,7 @@ export function OrderSimulationModal({
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-1">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 uppercase tracking-wider mb-1">
                 Quantity (Units/Lots)
               </label>
               <input
@@ -199,11 +199,11 @@ export function OrderSimulationModal({
                 min={1}
                 value={quantity}
                 onChange={(e) => setQuantity(Number(e.target.value))}
-                className="w-full px-3.5 py-2 rounded-xl bg-black border border-zinc-800 text-white text-xs focus:border-zinc-500 outline-none font-mono"
+                className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-black border border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white text-xs focus:border-blue-500 outline-none font-mono"
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-1">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 uppercase tracking-wider mb-1">
                 Price (₹)
               </label>
               <input
@@ -211,7 +211,7 @@ export function OrderSimulationModal({
                 step="0.05"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
-                className="w-full px-3.5 py-2 rounded-xl bg-black border border-zinc-800 text-white text-xs focus:border-zinc-500 outline-none font-mono"
+                className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-black border border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white text-xs focus:border-blue-500 outline-none font-mono"
               />
             </div>
           </div>
@@ -220,15 +220,15 @@ export function OrderSimulationModal({
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-xl bg-gradient-to-b from-white via-white/95 to-white/70 text-black hover:scale-[1.02] active:scale-[0.98] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-white/10 transition-all duration-150 cursor-pointer disabled:opacity-50"
+            className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-xl shadow-blue-500/20 transition-all duration-150 cursor-pointer disabled:opacity-50"
           >
             {loading ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin text-black" /> Verifying Safety Locks...
+                <Loader2 className="w-4 h-4 animate-spin text-white" /> Verifying Safety Locks...
               </>
             ) : (
               <>
-                <PlayCircle className="w-4 h-4 text-black" /> Dispatch Test Order Through Gateway
+                <PlayCircle className="w-4 h-4 text-white" /> Dispatch Test Order Through Gateway
               </>
             )}
           </button>
@@ -240,28 +240,28 @@ export function OrderSimulationModal({
             <div
               className={`p-4 rounded-2xl border text-xs space-y-2 ${
                 result.allowed
-                  ? "bg-zinc-900 border-emerald-500/40 text-emerald-200"
-                  : "bg-zinc-900 border-rose-500/40 text-rose-200"
+                  ? "bg-emerald-50 dark:bg-zinc-900 border-emerald-500/40 text-emerald-800 dark:text-emerald-200"
+                  : "bg-rose-50 dark:bg-zinc-900 border-rose-500/40 text-rose-800 dark:text-rose-200"
               }`}
             >
               <div className="flex items-center gap-2 font-bold text-sm">
                 {result.allowed ? (
                   <>
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
                     <span>ORDER PERMITTED & EXECUTED LIVE</span>
                   </>
                 ) : (
                   <>
-                    <ShieldAlert className="w-5 h-5 text-rose-400" />
+                    <ShieldAlert className="w-5 h-5 text-rose-600 dark:text-rose-400" />
                     <span>ORDER BLOCKED BY TERMINAL SAFETY LOCK</span>
                   </>
                 )}
               </div>
 
-              <p className="text-xs leading-relaxed text-zinc-300">{result.reason}</p>
+              <p className="text-xs leading-relaxed text-slate-700 dark:text-zinc-300">{result.reason}</p>
 
-              {result.allowed && result.details.order_id && (
-                <div className="pt-2 border-t border-zinc-800 flex items-center justify-between font-mono text-[11px] text-zinc-400">
+              {result.allowed && result.details?.order_id && (
+                <div className="pt-2 border-t border-slate-200 dark:border-zinc-800 flex items-center justify-between font-mono text-[11px] text-slate-600 dark:text-zinc-400">
                   <span>Broker Order ID: {result.details.order_id}</span>
                   <span>Exec Price: ₹{result.details.price}</span>
                 </div>

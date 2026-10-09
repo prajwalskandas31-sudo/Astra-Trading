@@ -92,3 +92,29 @@ export interface OrderSimulateResponse {
     client_id?: string;
   };
 }
+
+export interface UserUpdateRequest {
+  name?: string;
+  phone_number?: string;
+  notes?: string;
+  live_orders_enabled?: boolean;
+  whatsapp_alerts_enabled?: boolean;
+  telegram_alerts_enabled?: boolean;
+  telegram_chat_id?: string;
+  is_active?: boolean;
+  broker_api_key?: string;
+  broker_api_secret?: string;
+  broker_auth_token?: string;
+  broker_totp_pin?: string;
+}
+
+export interface OrderSimulationRequest {
+  user_id: number;
+  symbol: string;
+  quantity: number;
+  side: "BUY" | "SELL";
+  order_type?: string;
+  price?: number;
+  limit_price?: number;
+}
+

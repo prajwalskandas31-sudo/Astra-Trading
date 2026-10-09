@@ -197,17 +197,17 @@ export function UserManagementTable({
   return (
     <div className="space-y-4">
       {/* Control & Search Bar */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-4 rounded-2xl bg-zinc-950/80 border border-zinc-800 backdrop-blur-md">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-4 rounded-2xl bg-white dark:bg-zinc-950/80 border border-slate-200 dark:border-zinc-800 shadow-sm backdrop-blur-md">
         <div className="flex flex-1 items-center gap-2.5">
           {/* Search Input */}
           <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3.5 top-2.5 w-4 h-4 text-zinc-500" />
+            <Search className="absolute left-3.5 top-2.5 w-4 h-4 text-slate-400 dark:text-zinc-500" />
             <input
               type="text"
               placeholder="Search name, phone, broker, or client ID..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-black border border-zinc-800 text-white placeholder:text-zinc-500 focus:outline-none focus:border-zinc-500 transition"
+              className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-slate-50 dark:bg-black border border-slate-200 dark:border-zinc-800 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-500 focus:outline-none focus:border-blue-500 transition"
             />
           </div>
 
@@ -215,7 +215,7 @@ export function UserManagementTable({
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3 py-2 text-xs rounded-xl bg-black border border-zinc-800 text-zinc-300 focus:outline-none focus:border-zinc-500 transition"
+            className="px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-black border border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-zinc-300 focus:outline-none focus:border-blue-500 transition"
           >
             <option value="ALL">All Broker Statuses</option>
             <option value="Connected">Connected Only</option>
@@ -228,7 +228,7 @@ export function UserManagementTable({
           <select
             value={orderFilter}
             onChange={(e) => setOrderFilter(e.target.value)}
-            className="px-3 py-2 text-xs rounded-xl bg-black border border-zinc-800 text-zinc-300 focus:outline-none focus:border-zinc-500 hidden md:block transition"
+            className="px-3 py-2 text-xs rounded-xl bg-slate-50 dark:bg-black border border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-zinc-300 focus:outline-none focus:border-blue-500 hidden md:block transition"
           >
             <option value="ALL">All Order Modes</option>
             <option value="ENABLED">Live Orders ON</option>
@@ -236,10 +236,10 @@ export function UserManagementTable({
           </select>
         </div>
 
-        {/* Gradient Add User CTA from reference */}
+        {/* Add User CTA */}
         <button
           onClick={onOpenAddUser}
-          className="px-4 py-2 rounded-xl bg-gradient-to-b from-white via-white/95 to-white/70 text-black hover:scale-105 active:scale-95 font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-white/10 transition-all duration-150 cursor-pointer"
+          className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 transition-all duration-150 cursor-pointer"
         >
           <Plus className="w-3.5 h-3.5" />
           <span>Add New User</span>
@@ -248,14 +248,14 @@ export function UserManagementTable({
 
       {/* Global alert feedback banner */}
       {alertFeedback && (
-        <div className="p-3.5 rounded-2xl bg-zinc-900 border border-emerald-500/30 text-emerald-300 text-xs flex items-center justify-between animate-in fade-in">
+        <div className="p-3.5 rounded-2xl bg-emerald-50 dark:bg-zinc-900 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-xs flex items-center justify-between animate-in fade-in">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
             <span>{alertFeedback.message}</span>
           </div>
           <button
             onClick={() => setAlertFeedback(null)}
-            className="text-zinc-400 hover:text-white cursor-pointer"
+            className="text-slate-400 dark:text-zinc-400 hover:text-slate-700 dark:hover:text-white cursor-pointer"
           >
             ✕
           </button>
@@ -263,10 +263,10 @@ export function UserManagementTable({
       )}
 
       {/* Users Table */}
-      <div className="rounded-2xl border border-zinc-800/80 bg-zinc-950/60 overflow-hidden shadow-2xl backdrop-blur-md">
+      <div className="rounded-2xl border border-slate-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-950/60 overflow-hidden shadow-xl backdrop-blur-md">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-black/80 text-zinc-400 uppercase tracking-wider font-semibold border-b border-zinc-800 select-none">
+            <thead className="bg-slate-50 dark:bg-black/80 text-slate-500 dark:text-zinc-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-zinc-800 select-none">
               <tr>
                 <th className="py-3.5 px-4 font-mono text-[11px]">User Details</th>
                 <th className="py-3.5 px-4 font-mono text-[11px]">Broker Account</th>
@@ -279,7 +279,7 @@ export function UserManagementTable({
               </tr>
             </thead>
 
-            <tbody className="divide-y divide-zinc-850/60">
+            <tbody className="divide-y divide-slate-100 dark:divide-zinc-850/60">
               {filteredUsers.length === 0 ? (
                 <tr>
                   <td colSpan={8} className="py-14 text-center text-zinc-500">
@@ -294,38 +294,38 @@ export function UserManagementTable({
                   return (
                     <tr
                       key={user.id}
-                      className={`hover:bg-zinc-900/40 transition duration-150 ${
-                        !user.is_active ? "opacity-60 bg-rose-950/10" : ""
+                      className={`hover:bg-slate-50 dark:hover:bg-zinc-900/40 transition duration-150 ${
+                        !user.is_active ? "opacity-60 bg-rose-50 dark:bg-rose-950/10" : ""
                       }`}
                     >
                       {/* 1. User Name & Phone */}
                       <td className="py-4 px-4">
                         <div className="flex flex-col">
-                          <span className="font-bold text-white text-sm flex items-center gap-1.5">
+                          <span className="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-1.5">
                             {user.name}
                             {!user.is_active && (
-                              <span className="text-[10px] px-2 py-0.5 rounded-full bg-rose-500/15 text-rose-300 border border-rose-500/30 font-semibold font-mono">
+                              <span className="text-[10px] px-2 py-0.5 rounded-full bg-rose-100 dark:bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-500/30 font-semibold font-mono">
                                 REVOKED
                               </span>
                             )}
                           </span>
-                          <div className="flex items-center gap-1.5 mt-1 text-zinc-400 font-mono text-[11px]">
-                            <Phone className="w-3 h-3 text-zinc-500" />
+                          <div className="flex items-center gap-1.5 mt-1 text-slate-500 dark:text-zinc-400 font-mono text-[11px]">
+                            <Phone className="w-3 h-3 text-slate-400 dark:text-zinc-500" />
                             <span>{user.phone_number}</span>
                             <button
                               onClick={() => copyToClipboard(user.phone_number)}
                               title="Copy Phone"
-                              className="text-zinc-500 hover:text-zinc-300 ml-0.5 cursor-pointer"
+                              className="text-slate-400 hover:text-slate-700 dark:text-zinc-500 dark:hover:text-zinc-300 ml-0.5 cursor-pointer"
                             >
                               {copiedPhone === user.phone_number ? (
-                                <Check className="w-3 h-3 text-emerald-400" />
+                                <Check className="w-3 h-3 text-emerald-500 dark:text-emerald-400" />
                               ) : (
                                 <Copy className="w-3 h-3" />
                               )}
                             </button>
                           </div>
                           {user.notes && (
-                            <span className="text-[11px] text-zinc-500 mt-0.5 max-w-xs truncate">
+                            <span className="text-[11px] text-slate-400 dark:text-zinc-500 mt-0.5 max-w-xs truncate">
                               {user.notes}
                             </span>
                           )}
@@ -335,11 +335,11 @@ export function UserManagementTable({
                       {/* 2. Broker Account Info */}
                       <td className="py-4 px-4">
                         <div className="flex flex-col">
-                          <span className="font-semibold text-zinc-200">{user.broker_name}</span>
-                          <span className="font-mono text-[11px] text-zinc-400 mt-0.5">
-                            ID: <span className="text-emerald-400 font-medium">{user.broker_client_id}</span>
+                          <span className="font-semibold text-slate-800 dark:text-zinc-200">{user.broker_name}</span>
+                          <span className="font-mono text-[11px] text-slate-500 dark:text-zinc-400 mt-0.5">
+                            ID: <span className="text-emerald-600 dark:text-emerald-400 font-medium">{user.broker_client_id}</span>
                           </span>
-                          <span className="text-[10px] text-zinc-500 mt-0.5 truncate max-w-[190px]" title={user.broker_auth_message || ""}>
+                          <span className="text-[10px] text-slate-400 dark:text-zinc-500 mt-0.5 truncate max-w-[190px]" title={user.broker_auth_message || ""}>
                             {user.broker_auth_message || "Awaiting credentials"}
                           </span>
                         </div>
@@ -372,8 +372,8 @@ export function UserManagementTable({
                           )}
 
                           {user.broker_status === "Disconnected" && (
-                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-zinc-900 text-zinc-400 border border-zinc-800 font-mono">
-                              <XCircle className="w-3 h-3 text-zinc-500" />
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-slate-100 dark:bg-zinc-900 text-slate-600 dark:text-zinc-400 border border-slate-200 dark:border-zinc-800 font-mono">
+                              <XCircle className="w-3 h-3 text-slate-400 dark:text-zinc-500" />
                               Disconnected
                             </span>
                           )}
@@ -388,7 +388,7 @@ export function UserManagementTable({
                             onClick={() => handleToggleOrders(user)}
                             disabled={isLoading}
                             className={`relative inline-flex h-6 w-12 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                              user.live_orders_enabled ? "bg-emerald-500 shadow-lg shadow-emerald-500/30" : "bg-zinc-800"
+                              user.live_orders_enabled ? "bg-emerald-500 shadow-lg shadow-emerald-500/30" : "bg-slate-300 dark:bg-zinc-800"
                             }`}
                           >
                             <span
@@ -399,7 +399,7 @@ export function UserManagementTable({
                           </button>
                           <span
                             className={`text-[10px] font-mono font-bold tracking-wider uppercase ${
-                              user.live_orders_enabled ? "text-emerald-400" : "text-zinc-500"
+                              user.live_orders_enabled ? "text-emerald-600 dark:text-emerald-400" : "text-slate-400 dark:text-zinc-500"
                             }`}
                           >
                             {user.live_orders_enabled ? "LIVE ON" : "STOPPED"}
@@ -415,7 +415,7 @@ export function UserManagementTable({
                             onClick={() => handleToggleWhatsApp(user)}
                             disabled={isLoading}
                             className={`relative inline-flex h-5 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                              user.whatsapp_alerts_enabled ? "bg-emerald-500" : "bg-zinc-800"
+                              user.whatsapp_alerts_enabled ? "bg-emerald-500" : "bg-slate-300 dark:bg-zinc-800"
                             }`}
                           >
                             <span
@@ -428,7 +428,7 @@ export function UserManagementTable({
                             <button
                               onClick={() => handleTestAlert(user, "whatsapp")}
                               disabled={isLoading}
-                              className="text-[10px] text-emerald-400/80 hover:text-emerald-300 underline cursor-pointer"
+                              className="text-[10px] text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer"
                             >
                               Test Alert
                             </button>
@@ -444,7 +444,7 @@ export function UserManagementTable({
                             onClick={() => handleToggleTelegram(user)}
                             disabled={isLoading}
                             className={`relative inline-flex h-5 w-10 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                              user.telegram_alerts_enabled ? "bg-sky-500" : "bg-zinc-800"
+                              user.telegram_alerts_enabled ? "bg-sky-500" : "bg-slate-300 dark:bg-zinc-800"
                             }`}
                           >
                             <span
@@ -457,7 +457,7 @@ export function UserManagementTable({
                             <button
                               onClick={() => handleTestAlert(user, "telegram")}
                               disabled={isLoading}
-                              className="text-[10px] text-sky-400/80 hover:text-sky-300 underline cursor-pointer"
+                              className="text-[10px] text-sky-600 dark:text-sky-400 hover:underline cursor-pointer"
                             >
                               Test Alert
                             </button>
@@ -474,8 +474,8 @@ export function UserManagementTable({
                             disabled={isLoading}
                             className={`px-3 py-1 rounded-xl text-[11px] font-semibold transition border cursor-pointer active:scale-95 ${
                               user.is_active
-                                ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/20"
-                                : "bg-rose-500/10 text-rose-400 border-rose-500/30 hover:bg-rose-500/20"
+                                ? "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30 hover:bg-emerald-100 dark:hover:bg-emerald-500/20"
+                                : "bg-rose-50 dark:bg-rose-500/10 text-rose-700 dark:text-rose-400 border-rose-200 dark:border-rose-500/30 hover:bg-rose-100 dark:hover:bg-rose-500/20"
                             }`}
                           >
                             {user.is_active ? "Active" : "Revoked"}
@@ -490,25 +490,25 @@ export function UserManagementTable({
                           <button
                             onClick={() => onSimulateOrder(user)}
                             title="Test Live Order Placement Rule"
-                            className="p-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-800 transition active:scale-95 cursor-pointer"
+                            className="p-2 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-slate-200 dark:hover:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-zinc-800 transition active:scale-95 cursor-pointer"
                           >
-                            <PlayCircle className="w-4 h-4 text-emerald-400" />
+                            <PlayCircle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                           </button>
 
                           {/* Edit User & Credentials */}
                           <button
                             onClick={() => onEditUser(user)}
                             title="Edit User & Broker Settings"
-                            className="p-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-800 transition active:scale-95 cursor-pointer"
+                            className="p-2 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-slate-200 dark:hover:bg-zinc-800 text-slate-700 dark:text-zinc-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-zinc-800 transition active:scale-95 cursor-pointer"
                           >
-                            <Edit className="w-4 h-4 text-sky-400" />
+                            <Edit className="w-4 h-4 text-sky-600 dark:text-sky-400" />
                           </button>
 
                           {/* Delete User */}
                           <button
                             onClick={() => handleDelete(user)}
                             title="Delete User"
-                            className="p-2 rounded-xl bg-zinc-900 hover:bg-rose-950/40 text-zinc-400 hover:text-rose-400 border border-zinc-800 hover:border-rose-900 transition active:scale-95 cursor-pointer"
+                            className="p-2 rounded-xl bg-slate-100 dark:bg-zinc-900 hover:bg-rose-50 dark:hover:bg-rose-950/40 text-slate-400 dark:text-zinc-400 hover:text-rose-600 dark:hover:text-rose-400 border border-slate-200 dark:border-zinc-800 hover:border-rose-300 dark:hover:border-rose-900 transition active:scale-95 cursor-pointer"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>

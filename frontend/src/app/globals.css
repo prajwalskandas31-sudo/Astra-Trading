@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode in Tailwind CSS v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --color-destructive-foreground: var(--destructive-foreground);
   --color-card: var(--card);
@@ -31,12 +34,6 @@
   --accent: #eff6ff;
   --accent-foreground: #1d4ed8;
   --destructive-foreground: #ffffff;
-
-  --royal-grid-border: #e2e8f0;
-  --royal-card-bg: #ffffff;
-  --royal-card-hover: #f8fafc;
-  --royal-sidebar-bg: #ffffff;
-  --royal-header-bg: rgba(255, 255, 255, 0.85);
 }
 
 .dark {
@@ -55,19 +52,13 @@
   --accent: #111a2f;
   --accent-foreground: #60a5fa;
   --destructive-foreground: #ffffff;
-
-  --royal-grid-border: #17243b;
-  --royal-card-bg: #090f1e;
-  --royal-card-hover: #0e172c;
-  --royal-sidebar-bg: #070b15;
-  --royal-header-bg: rgba(7, 11, 21, 0.85);
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 /* Custom scrollbars */
@@ -81,10 +72,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(100, 116, 139, 0.4);
+  background: rgba(100, 116, 139, 0.3);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 116, 139, 0.7);
+  background: rgba(100, 116, 139, 0.6);
 }
