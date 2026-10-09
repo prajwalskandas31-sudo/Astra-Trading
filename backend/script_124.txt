@@ -1,0 +1,1 @@
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Components","item":"https://21st.dev/community/components"},{"@type":"ListItem","position":2,"name":"efferd","item":"https://21st.dev/@efferd"},{"@type":"ListItem","position":3,"name":"Efferd Dashboard 2"}]}
